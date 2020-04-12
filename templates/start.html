@@ -1,0 +1,34 @@
+{% extends "TemplateBase.html" %}
+{% block titulo %}Crear{% endblock %}
+
+{% block contenido %}
+
+<div class="container-fluid">
+    <form action="#" method="POST">
+      <div class="col-xs-1" align="center">
+        <label>ID</label>
+        <div class="col-3" align = 'center' >
+          
+          <input type="text" class="form-control" name="id" placeholder="ID" required>
+        </div>
+     
+        <!-- <div class="form-group col-md-6">
+            <label>Nombre</label>
+            <input type="text" class="form-control" name="name" placeholder="Nombre del Cliente">
+        </div> -->
+        
+        <div class="row">
+          <div class="col">
+              <p></p>
+          </div>
+      </div>
+  
+      <div class="col" align ='center'>
+        <input  type="submit" class="btn btn-primary col-md-3" value="Send">
+      </div>
+      </form>
+      
+    </div>
+    
+   
+{% endblock %}

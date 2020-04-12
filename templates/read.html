@@ -1,0 +1,64 @@
+{% extends "TemplateBase.html" %}
+{% block titulo %}Leer{% endblock %}
+
+{% block contenido %}
+
+<p>Leer registros</p>
+<div class="container-fluid">
+  <form action="#">
+    <div class="form-row">
+      <fieldset disabled></fieldset>
+      <div class="form-group col-md-6">
+        <label>ID</label>
+        <input type="text" class="form-control" name="id" placeholder="ID" value="{{data['_id']}}" disabled>
+      </div>
+
+      <div class="form-group col-md-6">
+          <label>Nombre</label>
+          <input type="text" class="form-control" name="name" placeholder="Nombre del Cliente" value="{{data['name']}}" disabled>
+      </div>
+  </form> 
+</div>
+
+{% for i in range (data['sistema']|length): %}
+ 
+   <div id="accordion{{i}}">
+    <div class="card">
+      
+      <div class="card-header" id="heading{{i}}">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{i}}" aria-expanded="true" aria-controls="collapse{{i}}">
+            {{data['sistema'][i]['modelo']}} SN: {{data['sistema'][i]['serie']}} Tipo: {{data['sistema'][i]['tipo']}}
+          </button>
+        </h5>
+      </div>
+  
+      <div id="collapse{{i}}" class="collapse hide" aria-labelledby="heading{{i}}" data-parent="#accordion{{i}}">
+        <div class="card-body">
+            <li>MODELO: {{data['sistema'][i]['modelo']}}</li>
+            <li>TIPO: {{data['sistema'][i]['tipo']}}</li>
+            <li>SERIE: {{data['sistema'][i]['serie']}}</li>
+            <li>NOMBRE: {{data['sistema'][i]['sysName']}}</li>
+            <li>UBICACIÓN: {{data['sistema'][i]['ubicacion']}}</li>
+            <li>AMBIENTE: {{data['sistema'][i]['ambiente']}}</li>
+            <li>CONFIGURACIÓN: {{data['sistema'][i]['config']}}</li>
+            <li>SISTEMA OPERATIVO: {{data['sistema'][i]['os']}}</li>
+            <p> </p>
+            <button id="{{i}}" onclick="myFunction(id)" type="button"  class="btn btn-secondary btn-sm">Edit</button>
+          
+
+
+        </div>
+      </div>
+    </div>
+   </div>
+
+ {% endfor %}
+ <script>
+  function myFunction(id) {
+  console.log(id)
+ // location.replace("build?id&data")
+
+  }
+  </script>
+{% endblock %}
