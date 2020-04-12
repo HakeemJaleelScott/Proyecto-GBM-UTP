@@ -105,7 +105,7 @@ def read():
         uid =request.form ['id']
         data=mongo.db.Colection_examp_produc.find_one({'_id':uid})
         print('hello world')
-       # return redirect(url_for('info', data= data))
+   
         return render_template('read.html',data=data)
     
     else:
