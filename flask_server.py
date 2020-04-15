@@ -104,7 +104,6 @@ def read():
     if request.method == 'POST':
         uid =request.form ['id']
         data=mongo.db.Colection_examp_produc.find_one({'_id':uid})
-        print('hello world')
    
         return render_template('read.html',data=data)
     
