@@ -1,0 +1,6 @@
+flask_server_test.py
+templates/collapsible.html
+recursos/
+flask-pymongo/
+documentos/
+.vscode
