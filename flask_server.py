@@ -104,8 +104,7 @@ def read():
     if request.method == 'POST':
         uid =request.form ['id']
         data=mongo.db.Colection_examp_produc.find_one({'_id':uid})
-        print('hello world')
-       # return redirect(url_for('info', data= data))
+
         return render_template('read.html',data=data)
     
     else:
@@ -114,8 +113,7 @@ def read():
 @prueba.route('/build')
 def build():
     return render_template('EUREKA.html')
-        # return render_template('collapsible.html', data=data)
-        
+       
 @prueba.route('/update')
 def update():
     return 0

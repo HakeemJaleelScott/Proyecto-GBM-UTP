@@ -44,7 +44,7 @@
             <li>CONFIGURACIÓN: {{data['sistema'][i]['config']}}</li>
             <li>SISTEMA OPERATIVO: {{data['sistema'][i]['os']}}</li>
             <p> </p>
-            <button id="{{i}}" onclick="window.location.href='build'"  class="btn btn-secondary btn-sm">Edit</button>
+            <button id="{{i}}" onclick=""  class="btn btn-secondary btn-sm">Edit</button>
           
 
 
@@ -57,7 +57,7 @@
  <script>
   function myFunction(id) {
   console.log(id)
- // location.replace("build?id&data")
+  location.replace("build")
 
   }
   </script>
