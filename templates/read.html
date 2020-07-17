@@ -19,8 +19,14 @@
           disabled>
       </div>
   </form>
+  
 </div>
-
+<div  class="container.fluid">
+  <a href="/add/{{data['_id']}}/{{data['name']}}" class="btn btn-secondary btn-sm">Añadir equipo</a>
+</div>
+<p> </p>
+<div class="containre-fluid">
+ 
 {% for i in range (data['sistema']|length): %}
 
 <div id="accordion{{i}}">
@@ -45,9 +51,12 @@
         <li>AMBIENTE: {{data['sistema'][i]['ambiente']}}</li>
         <li>CONFIGURACIÓN: {{data['sistema'][i]['config']}}</li>
         <li>SISTEMA OPERATIVO: {{data['sistema'][i]['os']}}</li>
-        <p> </p>
-        <button id="{{i}}" onclick="" class="btn btn-secondary btn-sm">Edit</button>
-
+        <div>
+          <a href="/update/{{data['_id']}}/{{i}}" class="btn btn-secondary btn-sm">Editar</a>
+        </div>
+       
+      
+        
 
 
       </div>
@@ -56,6 +65,7 @@
 </div>
 
 {% endfor %}
+</div>
 <script>
   function myFunction(id) {
     console.log(id)
