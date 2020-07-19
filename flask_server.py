@@ -127,7 +127,7 @@ def update(uid, index):
         os = request.form['os'] 
         #TODO
         #A ver que pex aqui... :'D
-        mongo.db.Colection_examp_produc.update_one({'_id': uid}, {'$set': {'sistema.$.[index]':
+        mongo.db.Colection_examp_produc.update_one({'_id': uid}, {'$set': {'sistema':
                                                                         {'modelo': model,
                                                                          'tipo': devType,
                                                                          'serie': serial,
