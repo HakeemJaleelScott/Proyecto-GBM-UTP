@@ -23,8 +23,13 @@ def home():
            return redirect(url_for('read', uid=data['_id']))
 
         except:
+            # data = mongo.db.Colection_examp_produc.find_one({'name':{'$regex': uid}})
+            data =list(mongo.db.Colection_examp_produc.find({'name':{'$regex': uid, '$options':'i'}}))
+            for i in data:
+                print(i)
+            return render_template('show.html', data=data)
 
-             return redirect(url_for('create', user=uid))
+             #return redirect(url_for('create', user=uid))
 
     else:
         return render_template('start.html')
