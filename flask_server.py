@@ -21,6 +21,8 @@ def home():
         try:
            data = mongo.db.Colection_examp_produc.find_one({'_id': uid})
            return redirect(url_for('read', uid=data['_id']))
+               
+           
 
         except:
             # data = mongo.db.Colection_examp_produc.find_one({'name':{'$regex': uid}})
