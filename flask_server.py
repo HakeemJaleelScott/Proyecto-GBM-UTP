@@ -16,31 +16,34 @@ establece la ruta dentro del servidor donde consultar la data
 
 @prueba.route('/', methods=['POST', 'GET'])
 def home():
+    #flag = True
     if request.method == 'POST':
         uid = request.form['id']
-        try:
-           data = mongo.db.Colection_examp_produc.find_one({'_id': uid})
-           return redirect(url_for('read', uid=data['_id']))
-               
-           
+        data =list(mongo.db.Colection_examp_produc.find({'name':{'$regex': uid, '$options':'i'}}))
+        if data:
+            print ('found by name')
+            return render_template('show.html', data=data) 
+        elif not data:
+            data = list(mongo.db.Colection_examp_produc.find({'_id':{'$regex': uid}}))
+            if data:
+                print('found by id')
+                return render_template('show.html', data=data)
+            else:
+                return render_template('not found.html')
+            
+            
 
-        except:
-            # data = mongo.db.Colection_examp_produc.find_one({'name':{'$regex': uid}})
-            data =list(mongo.db.Colection_examp_produc.find({'name':{'$regex': uid, '$options':'i'}}))
-            for i in data:
-                print(i)
-            return render_template('show.html', data=data)
-
-             #return redirect(url_for('create', user=uid))
+    
+                
 
     else:
         return render_template('start.html')
 
 
-@prueba.route('/create/<user>', methods=['POST', 'GET'])
-def create(user):
+@prueba.route('/create', methods=['POST', 'GET'])
+def create():
     if request.method == 'POST':
-        uid = user
+        uid = request.form['uid']
         name = request.form['name']
         model = request.form['model']
         devType = request.form['devType']
@@ -65,7 +68,7 @@ def create(user):
         data = mongo.db.Colection_examp_produc.find_one({'_id': uid})
         return redirect(url_for('add', uid=data['_id'], name=data['name']))
     else:
-        return render_template('create.html', uid=user)
+        return render_template('create.html')
 
 
 @prueba.route('/add/<uid>/<name>', methods=['POST', 'GET'])

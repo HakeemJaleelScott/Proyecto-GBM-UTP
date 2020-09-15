@@ -2,44 +2,54 @@
 
 
 {% block contenido %}
+<head>
+  <title>Page Title</title>
 
+  
+  </head>
 <p>Leer mostrar lista de clientes</p>
 
-<div class="containre-fluid">
- 
-{% for i in range (data|length): %}
 
-<div id="accordion{{i}}">
-  <div class="card">
 
-    <div class="card-header" id="heading{{i}}">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{i}}" aria-expanded="true"
-          aria-controls="collapse{{i}}">
-          ID: {{data[i]['_id']}} Cliente: {{data[i]['name']}}
-        </button>
-      </h5>
-    </div>
 
-    <div id="collapse{{i}}" class="collapse hide" aria-labelledby="heading{{i}}" data-parent="#accordion{{i}}">
-      <div class="card-body">
-        {% for j in range (data[i]['sistema']|length): %}
-        <li>{{data[i]['sistema'][j]['modelo']}} {{data[i]['sistema'][j]['serie']}}</li>
-        {% endfor %}
-        <div>
-          <a href="/read/{{data[i]['_id']}}" class="btn btn-secondary btn-sm">Ver más</a>
+<div class="container-fluid">
+
+  {% for i in range (data|length): %}
+
+  <div id="accordion{{i}}">
+    <div class="card">
+
+      <div class="card-header" id="heading{{i}}">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{i}}" aria-expanded="true"
+            aria-controls="collapse{{i}}">
+            ID: {{data[i]['_id']}} Cliente: {{data[i]['name']}}
+          </button>
+        </h5>
+      </div>
+
+      <div id="collapse{{i}}" class="collapse hide" aria-labelledby="heading{{i}}" data-parent="#accordion{{i}}">
+        <div class="card-body">
+          {% for j in range (data[i]['sistema']|length): %}
+          <li>{{data[i]['sistema'][j]['modelo']}} {{data[i]['sistema'][j]['serie']}}</li>
+          {% endfor %}
+          <div>
+            <a href="/read/{{data[i]['_id']}}" class="btn btn-secondary btn-sm">Ver más</a>
+          </div>
+
+
+
+
+
         </div>
-       
-      
-        
-
-
       </div>
     </div>
   </div>
-</div>
 
-{% endfor %}
+  {% endfor %}
+  <div align="right">
+    <a href="/create" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span>Añadir Registro Nuevo</a>
+</div>
 </div>
 <script>
   function myFunction(id) {
