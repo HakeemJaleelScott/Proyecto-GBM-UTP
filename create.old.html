@@ -1,0 +1,94 @@
+{% extends "TemplateBase.html" %}
+
+
+{% block contenido %}
+
+<p>Crear un nuevo registro</p>
+<div class="container-fluid">
+  <form action="#" method="POST">
+    <div class="form-row">
+
+      <div class="form-group col-md-6">
+        <label>ID</label>
+        <input type="text" class="form-control" name="id" placeholder="ID" >
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Nombre</label>
+        <input type="text" class="form-control" name="name" placeholder="Nombre del Cliente" required>
+      </div>
+
+      <!-- ----------------------------------------------------------------------------------------------------------- -->
+
+
+      <div class="form-group col-md-6">
+        <label>Modelo</label>
+        <input type="text" class="form-control" name="model" placeholder="Sistema" required>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Tipo</label>
+        <input type="text" class="form-control" name="devType" placeholder="Tipo" required>
+      </div>
+
+      <!-- ----------------------------------------------------------------------------------------------------------- -->
+
+      <div class="form-group col-md-6">
+        <label>Serie</label>
+        <input type="text" class="form-control" name="serial" placeholder="Serie" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Nombre del Equipo</label>
+        <input type="text" class="form-control" name="sysName" placeholder="Nombre del Equipo" required>
+      </div>
+
+      <!-- ----------------------------------------------------------------------------------------------------------- -->
+
+
+      <div class="form-group col-md-6">
+        <label for="location">Ubicación</label>
+        <input type="text" class="form-control" name="location" placeholder="Ubicación" required>
+      </div>
+
+      <!-- ----------------------------------------------------------------------------------------------------------- -->
+
+      <div class="form-group col-md-2">
+        <label>Ambiente</label>
+        <select name="env" class="form-control" required>
+          <option value="">Choose...</option>
+          <option value="Producción">Producción</option>
+          <option value="Contingencia">Contingencia</option>
+          <option value="Desarrollo">Desarrollo</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-2">
+        <label>Configuración</label>
+        <select name="config" class="form-control" required>
+          <option value="">Choose...</option>
+          <option value="Físico">Físico</option>
+          <option value="Virtual">Virtual</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="os">Sistema Operativo</label>
+        <select name="os" class="form-control" required>
+          <option value="">Choose...</option>
+          <option value="AIX">AIX</option>
+          <option value="HMC">HMC</option>
+          <option value="Windows Server">Windows Server</option>
+        </select>
+      </div>
+      <div class="col" align='center'>
+        <input type="submit" class="btn btn-primary col-md-3" value="Send" href='form2'>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+
+
+
+{% endblock %}

@@ -45,25 +45,8 @@ def create():
     if request.method == 'POST':
         uid = request.form['uid']
         name = request.form['name']
-        model = request.form['model']
-        devType = request.form['devType']
-        serial = request.form['serial']
-        sysName = request.form['sysName']
-        location = request.form['location']
-        env = request.form['env']
-        config = request.form['config']
-        os = request.form['os']
 
-        mongo.db.Colection_examp_produc.insert_one({'_id': uid, 'name': name,
-                                                    'sistema': [{'modelo': model,
-                                                                 'tipo': devType,
-                                                                 'serie': serial,
-                                                                 'sysName': sysName,
-                                                                 'ubicacion': location,
-                                                                 'ambiente': env,
-                                                                 'config': config,
-                                                                 'os': os}]
-                                                    })
+        mongo.db.Colection_examp_produc.insert_one({'_id': uid, 'name': name })
 
         data = mongo.db.Colection_examp_produc.find_one({'_id': uid})
         return redirect(url_for('add', uid=data['_id'], name=data['name']))
@@ -125,7 +108,8 @@ def build():
 @prueba.route('/update/<uid>/<index>', methods=['POST', 'GET'])
 def update(uid, index):
     
-    index = int(index)
+    index1 = int(index)
+    index2= str(index)
     if request.method == 'POST':
         model = request.form['model']
         devType = request.form['devType']
@@ -135,26 +119,25 @@ def update(uid, index):
         env = request.form['env']
         config = request.form['config']
         os = request.form['os'] 
+        index
         #TODO
         #A ver que pex aqui... :'D
-        mongo.db.Colection_examp_produc.update_one({'_id': uid}, {'$set': {'sistema':
-                                                                        {'modelo': model,
-                                                                         'tipo': devType,
-                                                                         'serie': serial,
-                                                                         'sysName': sysName,
-                                                                         'ubicacion': location,
-                                                                         'ambiente': env,
-                                                                         'config': config,
-                                                                         'os': os},
+        mongo.db.Colection_examp_produc.update_one({'_id': uid}, {'$set': {'sistema.'+index2+'.modelo': model,
+                                                                         'sistema.'+index2+'.tipo': devType,
+                                                                         'sistema.'+index2+'.serie': serial,
+                                                                         'sistema.'+index2+'.sysName': sysName,
+                                                                         'sistema.'+index2+'.ubicacion': location,
+                                                                         'sistema.'+index2+'.ambiente': env,
+                                                                         'sistema.'+index2+'.config': config,
+                                                                         'sistema.'+index2+'.os': os},
                                                     
                                                                         }
-                                                              },
                                                # {arrayFilters:index,upsert:False}
                                                )
         return redirect(url_for('read', uid=uid))
     else:
         data = mongo.db.Colection_examp_produc.find_one({'_id': uid})
-        return render_template('update.html', data=data, sistema=index)
+        return render_template('update.html', data=data, sistema=index1)
 
 
 @prueba.route('/delete')
