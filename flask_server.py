@@ -43,13 +43,13 @@ def home():
 @prueba.route('/create', methods=['POST', 'GET'])
 def create():
     if request.method == 'POST':
-        uid = request.form['uid']
+        uid = request.form['id']
         name = request.form['name']
 
         mongo.db.Colection_examp_produc.insert_one({'_id': uid, 'name': name })
 
-        data = mongo.db.Colection_examp_produc.find_one({'_id': uid})
-        return redirect(url_for('add', uid=data['_id'], name=data['name']))
+        mongo.db.Colection_examp_produc.find_one({'_id': uid})
+        return redirect(url_for('create'))
     else:
         return render_template('create.html')
 
@@ -120,8 +120,7 @@ def update(uid, index):
         config = request.form['config']
         os = request.form['os'] 
         index
-        #TODO
-        #A ver que pex aqui... :'D
+    
         mongo.db.Colection_examp_produc.update_one({'_id': uid}, {'$set': {'sistema.'+index2+'.modelo': model,
                                                                          'sistema.'+index2+'.tipo': devType,
                                                                          'sistema.'+index2+'.serie': serial,
@@ -132,7 +131,6 @@ def update(uid, index):
                                                                          'sistema.'+index2+'.os': os},
                                                     
                                                                         }
-                                               # {arrayFilters:index,upsert:False}
                                                )
         return redirect(url_for('read', uid=uid))
     else:
