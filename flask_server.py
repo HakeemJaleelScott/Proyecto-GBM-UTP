@@ -48,7 +48,7 @@ def create():
 
         mongo.db.Colection_examp_produc.insert_one({'_id': uid, 'name': name })
 
-        mongo.db.Colection_examp_produc.find_one({'_id': uid})
+        #mongo.db.Colection_examp_produc.find_one({'_id': uid})
         return redirect(url_for('create'))
     else:
         return render_template('create.html')
