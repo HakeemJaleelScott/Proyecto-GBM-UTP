@@ -22,36 +22,47 @@
 
 
       <div class="form-group col-md-6">
-        <label>Modelo</label>
-        <input type="text" class="form-control" name="model" placeholder="Sistema" required>
+        <label>Plataforma</label>
+        <input type="text" class="form-control" name="plataforma" placeholder="Plataforma" required>
       </div>
 
       <div class="form-group col-md-6">
-        <label>Tipo</label>
-        <input type="text" class="form-control" name="devType" placeholder="Tipo" required>
+        <label>Versión</label>
+        <input type="text" class="form-control" name="version" placeholder="Versión" required>
       </div>
 
       <!-- ----------------------------------------------------------------------------------------------------------- -->
 
       <div class="form-group col-md-6">
-        <label>Serie</label>
-        <input type="text" class="form-control" name="serial" placeholder="Serie" required>
+        <label for="SO">Sistema Operativo</label>
+        <select name="SO" class="form-control" required>
+          <option value="">Choose...</option>
+          <option value="AIX">AIX</option>
+          <option value="HMC">HMC</option>
+          <option value="Windows Server">Windows Server</option>
+          <option value="Linux">Linux</option>
+          <option value="AS400">AS400</option>
+          <option value="Solaris">Solaris</option>
+          <option value="IBM Cloud">IBM Cloud</option>
+          <option value="Firmware Propietario">Firmware Propietario</option>
+          <option value="Otro">Otro</option>
+        </select>
       </div>
+      
       <div class="form-group col-md-6">
-        <label>Nombre del Equipo</label>
-        <input type="text" class="form-control" name="sysName" placeholder="Nombre del Equipo" required>
+        <label>Solución</label>
+        <input type="text" class="form-control" name="solucion" placeholder="Solución" required>
       </div>
 
       <!-- ----------------------------------------------------------------------------------------------------------- -->
 
-
+<!-- 
       <div class="form-group col-md-6">
         <label for="location">Ubicación</label>
         <input type="text" class="form-control" name="location" placeholder="Ubicación" required>
       </div>
 
-      <!-- ----------------------------------------------------------------------------------------------------------- -->
-
+      
       <div class="form-group col-md-2">
         <label>Ambiente</label>
         <select name="env" class="form-control" required>
@@ -79,9 +90,10 @@
           <option value="HMC">HMC</option>
           <option value="Windows Server">Windows Server</option>
         </select>
-      </div>
+      </div> -->
+
       <div class="col" align='center'>
-        <input type="submit" class="btn btn-primary col-md-3" value="Send" href='form2'>
+        <input type="submit" class="btn btn-primary col-md-3" value="Send" >
       </div>
 
   </form>
