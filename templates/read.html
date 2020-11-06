@@ -23,28 +23,29 @@
   </form>
   
 </div>
-<div  class="container.fluid">
+<div  class="container-fluid">
   <a href="/add/{{data['_id']}}/{{data['name']}}" class="btn btn-secondary btn-sm">Añadir equipo</a>
   <a href="/addsw/{{data['_id']}}/{{data['name']}}" class="btn btn-secondary btn-sm">Añadir software</a>
 </div>
 <p> </p>
-<div class="containre-fluid">
+<div class="form-row">
+<div class="containre-fluid col-md-6">
  
 {% for i in range (data['sistema']|length): %}
 
-<div id="accordion{{i}}">
+<div id="accordion{{data['sistema'][i]['serie']}}">
   <div class="card">
 
-    <div class="card-header" id="heading{{i}}">
+    <div class="card-header" id="heading{{data['sistema'][i]['serie']}}">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{i}}" aria-expanded="true"
-          aria-controls="collapse{{i}}">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{data['sistema'][i]['serie']}}" aria-expanded="true"
+          aria-controls="collapse{{data['sistema'][i]['serie']}}">
           {{data['sistema'][i]['modelo']}} SN: {{data['sistema'][i]['serie']}} Tipo: {{data['sistema'][i]['tipo']}}
         </button>
       </h5>
     </div>
 
-    <div id="collapse{{i}}" class="collapse hide" aria-labelledby="heading{{i}}" data-parent="#accordion{{i}}">
+    <div id="collapse{{data['sistema'][i]['serie']}}" class="collapse hide" aria-labelledby="heading{{data['sistema'][i]['serie']}}" data-parent="#accordion{{data['sistema'][i]['serie']}}">
       <div class="card-body">
         <li>MODELO: {{data['sistema'][i]['modelo']}}</li>
         <li>TIPO: {{data['sistema'][i]['tipo']}}</li>
@@ -68,6 +69,44 @@
 </div>
 
 {% endfor %}
+</div>
+
+<div class="containre-fluid col-md-6">
+{% for i in range (data['SW']|length): %}
+
+<div id="accordion1">
+  <div class="card">
+
+    <div class="card-header" id="heading{{i}}">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{i}}" aria-expanded="true"
+          aria-controls="collapse{{i}}">
+          {{data['SW'][i]['plataforma']}} 
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapse{{i}}" class="collapse hide" aria-labelledby="heading{{i}}" data-parent="#accordion{{i}}">
+      <div class="card-body">
+        <li>PLATAFORMA: {{data['SW'][i]['plataforma']}}</li>
+        <li>VERSIÓN: {{data['SW'][i]['version']}}</li>
+        <li>SISTEMA OPERATIVO: {{data['SW'][i]['SO']}}</li>
+        <li>SOLUCIÓN: {{data['SW'][i]['solucion']}}</li>
+        <div>
+          <a href="/updatesw/{{data['_id']}}/{{i}}" class="btn btn-secondary btn-sm">Editar</a>
+        </div>
+       
+      
+        
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+</div>
 </div>
 
 {% endblock %}

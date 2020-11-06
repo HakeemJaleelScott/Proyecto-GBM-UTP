@@ -3,42 +3,69 @@
 
 {% block contenido %}
 
-<p>Crear un nuevo registro</p>
+<p>editar software</p>
+
+{{data}}
+
 <div class="container-fluid">
   <form action="#" method="POST">
     <div class="form-row">
-
+      <fieldset disabled></fieldset>
       <div class="form-group col-md-6">
-        <label>Modelo</label>
-        <input type="text" class="form-control" name="model" placeholder="Sistema" required>
+        <label>ID</label>
+        <input type="text" class="form-control" name="id" placeholder="ID" value="{{data['_id']}}" disabled>
       </div>
 
       <div class="form-group col-md-6">
-        <label>Tipo</label>
-        <input type="text" class="form-control" name="devType" placeholder="Tipo" required>
-      </div>
-
-      <!-- ----------------------------------------------------------------------------------------------------------- -->
-
-      <div class="form-group col-md-6">
-        <label>Serie</label>
-        <input type="text" class="form-control" name="serial" placeholder="Serie" required>
-      </div>
-      <div class="form-group col-md-6">
-        <label>Nombre del Equipo</label>
-        <input type="text" class="form-control" name="sysName" placeholder="Nombre del Equipo" required>
+        <label>Nombre</label>
+        <input type="text" class="form-control" name="name" placeholder="Nombre del Cliente" value="{{data['name']}}" disabled>
       </div>
 
       <!-- ----------------------------------------------------------------------------------------------------------- -->
 
 
+      <div class="form-group col-md-6">
+        <label>Plataforma</label>
+        <input type="text" class="form-control" name="plataforma" placeholder="Plataforma" value="{{data['SW'][sistema]['plataforma']}}" required>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Versión</label>
+        <input type="text" class="form-control" name="version" placeholder="Versión" value="{{data['SW'][sistema]['version']}}" required>
+      </div>
+
+      <!-- ----------------------------------------------------------------------------------------------------------- -->
+
+      <div class="form-group col-md-6">
+        <label for="SO">Sistema Operativo</label>
+        <select name="SO" class="form-control" required>
+          <option value="{{data['SW'][sistema]['SO']}}">{{data['SW'][sistema]['SO']}}</option>
+          <option value="AIX">AIX</option>
+          <option value="HMC">HMC</option>
+          <option value="Windows Server">Windows Server</option>
+          <option value="Linux">Linux</option>
+          <option value="AS400">AS400</option>
+          <option value="Solaris">Solaris</option>
+          <option value="IBM Cloud">IBM Cloud</option>
+          <option value="Firmware Propietario">Firmware Propietario</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      
+      <div class="form-group col-md-6">
+        <label>Solución</label>
+        <input type="text" class="form-control" name="solucion" placeholder="Solución" value="{{data['SW'][sistema]['solucion']}}" required>
+      </div>
+
+      <!-- ----------------------------------------------------------------------------------------------------------- -->
+
+<!-- 
       <div class="form-group col-md-6">
         <label for="location">Ubicación</label>
         <input type="text" class="form-control" name="location" placeholder="Ubicación" required>
       </div>
 
-      <!-- ----------------------------------------------------------------------------------------------------------- -->
-
+      
       <div class="form-group col-md-2">
         <label>Ambiente</label>
         <select name="env" class="form-control" required>
@@ -66,14 +93,17 @@
           <option value="HMC">HMC</option>
           <option value="Windows Server">Windows Server</option>
         </select>
-      </div>
+      </div> -->
+
       <div class="col" align='center'>
-        <input type="submit" class="btn btn-primary col-md-3" value="Send" href='form2'>
+        <input type="submit" class="btn btn-primary col-md-3" value="Send" >
       </div>
-    </div>
+
   </form>
 
 </div>
+
+
 
 
 

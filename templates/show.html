@@ -2,12 +2,9 @@
 
 
 {% block contenido %}
-<head>
-  <title>Page Title</title>
 
-  
-  </head>
-<p>Leer mostrar lista de clientes</p>
+
+<p>Mostrar lista de clientes</p>
 
 
 
@@ -36,11 +33,6 @@
           <div>
             <a href="/read/{{data[i]['_id']}}" class="btn btn-secondary btn-sm">Ver más</a>
           </div>
-
-
-
-
-
         </div>
       </div>
     </div>
@@ -48,8 +40,8 @@
 
   {% endfor %}
   <div align="right">
-    <a href="/create" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span>Añadir Registro Nuevo</a>
-</div>
+    <a href="/create" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span>Añadir Nuevo Cliente</a>
+  </div>
 </div>
 <script>
   function myFunction(id) {
